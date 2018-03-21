@@ -5,7 +5,7 @@ Bundler/OrderedGems:
   Exclude:
     - Gemfile
 Metrics/LineLength:
-  Max: 150
+  Max: 160
 Naming/FileName:
   Exclude:
     - Gemfile
