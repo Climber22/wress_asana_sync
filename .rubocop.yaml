@@ -1,0 +1,15 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  DisplayCopNames: true
+Bundler/OrderedGems:
+  Exclude:
+    - Gemfile
+Metrics/LineLength:
+  Max: 150
+Naming/FileName:
+  Exclude:
+    - Gemfile
+Rails:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
