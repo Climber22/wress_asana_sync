@@ -18,14 +18,14 @@ class AsanaApiClient
     start_on
   ].freeze
 
-  def initialize(old_workspace_and_project, new_workspace_and_project)
+  def initialize(src_workspace_and_project, dest_workspace_and_project)
     @client = Asana::Client.new do |c|
       c.authentication :access_token, ENV['ASANA_ACCESS_TOKEN']
     end
-    @src_workspace = find_workspace_by_name(old_workspace_and_project[:workspace])
-    @src_project = find_project_by_name(@src_workspace.id, old_workspace_and_project[:project])
-    @dest_workspace = find_workspace_by_name(new_workspace_and_project[:workspace])
-    @dest_project = find_project_by_name(@dest_workspace.id, new_workspace_and_project[:project])
+    @src_workspace = find_workspace_by_name(src_workspace_and_project[:workspace])
+    @src_project = find_project_by_name(@src_workspace.id, src_workspace_and_project[:project])
+    @dest_workspace = find_workspace_by_name(dest_workspace_and_project[:workspace])
+    @dest_project = find_project_by_name(@dest_workspace.id, dest_workspace_and_project[:project])
   end
 
   def sync_tasks
