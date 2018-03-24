@@ -30,13 +30,14 @@ class AsanaApiClient
 
   def sync_tasks
     src_tasks = tasks_in_project(@src_project.id)
+    dest_tasks = tasks_in_project(@dest_project.id)
     src_tasks.each do |src_task|
-      cp_task(src_task, @dest_workspace.id) unless task_exists?(src_task, @dest_project.id)
+      cp_task(src_task, @dest_workspace.id) unless task_exists?(src_task, dest_tasks)
     end
   end
 
-  def task_exists?(searched_task, target_project_id)
-    tasks_in_project(target_project_id).each do |target_task|
+  def task_exists?(searched_task, tasks_in_target_project)
+    tasks_in_target_project.each do |target_task|
       return true if searched_task.name == target_task.name
     end
     false
