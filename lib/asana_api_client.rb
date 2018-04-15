@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'asana'
-
+require 'pry'
 class InvalidSectionNameError < StandardError; end
 class InvalidWorkspaceNameError < StandardError; end
 
@@ -72,6 +72,7 @@ class AsanaApiClient
   end
 
   def update_task_and_stories(src_task, dest_task)
+    return if Time.parse(src_task.modified_at) < Time.parse(dest_task.modified_at)
     update_task(src_task, dest_task)
     update_memberships(src_task, dest_task)
     update_stories(src_task, dest_task)
