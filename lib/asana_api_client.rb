@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'asana'
-require 'pry'
+
 class InvalidSectionNameError < StandardError; end
 class InvalidWorkspaceNameError < StandardError; end
 
